@@ -136,6 +136,23 @@ function plano(texto) {
     .replace(/ñ/g, "n");
 }
 
+// Logos propios para canales deportivos (archivos logo-*.png del repo).
+const BASE_LOGOS = "https://raw.githubusercontent.com/cuentademo051092/kino-plugin-SrRegiotv/main/";
+const LOGOS = [
+  [/azteca\s*deportes|tv\s*azteca\s*7/, "logo-azteca.png"],
+  [/fox\s*sports/, "logo-fox.png"],
+  [/espn/, "logo-espn.png"],
+  [/claro\s*sports/, "logo-claro.png"],
+  [/tyc/, "logo-tyc.png"],
+  [/tudn/, "logo-tudn.png"],
+];
+
+function logoPropio(nombre) {
+  const n = plano(nombre);
+  for (const [re, archivo] of LOGOS) if (re.test(n)) return BASE_LOGOS + archivo;
+  return "";
+}
+
 // Entradas que son publicidad del creador y no canales.
 function esPublicidad(nombre, url) {
   if (/sr_regio/i.test(url)) return true;
@@ -219,6 +236,8 @@ function leerLista(texto, usados, permitidos, excluidos) {
           stream: { url: linea },
         };
         if (/^https?:\/\//i.test(pendiente.logo)) canal.logo = pendiente.logo;
+        const propio = logoPropio(pendiente.nombre);
+        if (propio) canal.logo = propio;
         canales.push(canal);
       }
     }

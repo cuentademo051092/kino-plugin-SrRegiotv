@@ -143,7 +143,8 @@ const LOGOS = [
   [/fox\s*sports/, "logo-fox.png"],
   [/espn/, "logo-espn.png"],
   [/claro\s*sports/, "logo-claro.png"],
-  [/tyc/, "logo-tyc.png"],
+  [/ty\s*c\s*sports|tyc/, "logo-tyc.png"],
+  [/win\s*sports/, "logo-win.png"],
   [/tudn/, "logo-tudn.png"],
 ];
 

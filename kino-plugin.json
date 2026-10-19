@@ -1,7 +1,7 @@
 {
   "id": "sr-regio-tv",
   "name": "Sr. Regio TV",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "apiVersion": 3,
   "entry": "plugin.js",
   "icon": "icon.png",
